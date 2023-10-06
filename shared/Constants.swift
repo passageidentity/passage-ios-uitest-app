@@ -12,6 +12,10 @@ struct Constants {
     static let apiUrl = "https://auth-uat.passage.dev"
     
     static let textFieldLabel = "email"
+    static let successLabel = "success"
+    static let failureLabel = "failure"
     static let registerPasskeyButton = "register with passkey"
-    static let loginPasskeyButon = "login with passkey"
+    static let loginPasskeyButton = "login with passkey"
+    static let systemContinueButton = "Continue"
+    static let authTokenLabel = "auth token: "
 }

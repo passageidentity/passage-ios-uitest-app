@@ -18,28 +18,32 @@ struct ContentView: View {
     
     @State var identifier: String = ""
     @State var isShowingSuccessAlert = false
+    @State var isShowingFailureAlert = false
+    @State var authToken = ""
     
     var body: some View {
         VStack {
             TextField(Constants.textFieldLabel, text: $identifier)
                 .textFieldStyle(.roundedBorder)
             Button(Constants.registerPasskeyButton, action: registerWithPasskey)
-            Button(Constants.loginPasskeyButon, action: loginWithPasskey)
+            Button(Constants.loginPasskeyButton, action: loginWithPasskey)
             
         }
-        .alert("Success", isPresented: $isShowingSuccessAlert) {
-            
+        .alert(Constants.successLabel, isPresented: $isShowingSuccessAlert) {} message: {
+            Text("\(Constants.authTokenLabel)\(authToken)")
         }
+        .alert(Constants.failureLabel, isPresented: $isShowingFailureAlert) {}
         .padding()
     }
     
     func registerWithPasskey() {
         Task {
             do {
-                let _ = try await passage.registerWithPasskey(identifier: identifier)
+                let authResult = try await passage.registerWithPasskey(identifier: identifier)
+                authToken = authResult.authToken
                 isShowingSuccessAlert = true
             } catch {
-                print("Error: \(error)")
+                isShowingFailureAlert = true
             }
         }
     }
@@ -47,10 +51,11 @@ struct ContentView: View {
     func loginWithPasskey() {
         Task {
             do {
-                let _ = try await passage.loginWithPasskey()
+                let authResult = try await passage.loginWithPasskey()
+                authToken = authResult.authToken
                 isShowingSuccessAlert = true
             } catch {
-                print("Error: \(error)")
+                isShowingFailureAlert = true
             }
         }
     }

@@ -13,10 +13,10 @@
 		DF1E0D3C2AD0720D0074133C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF1E0D3B2AD0720D0074133C /* Preview Assets.xcassets */; };
 		DF771AAA2AD075B400AF810B /* Passage in Frameworks */ = {isa = PBXBuildFile; productRef = DF771AA92AD075B400AF810B /* Passage */; };
 		DF771AAC2AD0789700AF810B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF771AAB2AD0789700AF810B /* Constants.swift */; };
-		DF771AAE2AD0797C00AF810B /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF771AAD2AD0797C00AF810B /* Helpers.swift */; };
 		DF771AB72AD0A60000AF810B /* passage_ios_uitest_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF771AB62AD0A60000AF810B /* passage_ios_uitest_appUITests.swift */; };
-		DF771AB92AD0A60000AF810B /* passage_ios_uitest_appUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF771AB82AD0A60000AF810B /* passage_ios_uitest_appUITestsLaunchTests.swift */; };
 		DFC295CC2AD0A7840074733A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF771AAB2AD0789700AF810B /* Constants.swift */; };
+		DFC295CD2AD0A8420074733A /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF771AAD2AD0797C00AF810B /* Helpers.swift */; };
+		DFC295D12AD0AB3E0074733A /* Biometrics.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC295D02AD0AB3E0074733A /* Biometrics.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +41,9 @@
 		DF771AAD2AD0797C00AF810B /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		DF771AB42AD0A60000AF810B /* passage-ios-uitest-appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "passage-ios-uitest-appUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF771AB62AD0A60000AF810B /* passage_ios_uitest_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = passage_ios_uitest_appUITests.swift; sourceTree = "<group>"; };
-		DF771AB82AD0A60000AF810B /* passage_ios_uitest_appUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = passage_ios_uitest_appUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		DFC295CE2AD0AB3E0074733A /* passage-ios-uitest-appUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "passage-ios-uitest-appUITests-Bridging-Header.h"; sourceTree = "<group>"; };
+		DFC295CF2AD0AB3E0074733A /* Biometrics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Biometrics.h; sourceTree = "<group>"; };
+		DFC295D02AD0AB3E0074733A /* Biometrics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Biometrics.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +91,6 @@
 				DF771AA72AD0759400AF810B /* passage-ios */,
 				DF1E0D332AD0720C0074133C /* passage_ios_uitest_appApp.swift */,
 				DF1E0D352AD0720C0074133C /* ContentView.swift */,
-				DF771AAD2AD0797C00AF810B /* Helpers.swift */,
 				DF1E0D372AD0720D0074133C /* Assets.xcassets */,
 				DF1E0D392AD0720D0074133C /* passage_ios_uitest_app.entitlements */,
 				DF1E0D3A2AD0720D0074133C /* Preview Content */,
@@ -115,8 +116,11 @@
 		DF771AB52AD0A60000AF810B /* passage-ios-uitest-appUITests */ = {
 			isa = PBXGroup;
 			children = (
+				DF771AAD2AD0797C00AF810B /* Helpers.swift */,
 				DF771AB62AD0A60000AF810B /* passage_ios_uitest_appUITests.swift */,
-				DF771AB82AD0A60000AF810B /* passage_ios_uitest_appUITestsLaunchTests.swift */,
+				DFC295CF2AD0AB3E0074733A /* Biometrics.h */,
+				DFC295D02AD0AB3E0074733A /* Biometrics.m */,
+				DFC295CE2AD0AB3E0074733A /* passage-ios-uitest-appUITests-Bridging-Header.h */,
 			);
 			path = "passage-ios-uitest-appUITests";
 			sourceTree = "<group>";
@@ -185,6 +189,7 @@
 					};
 					DF771AB32AD0A60000AF810B = {
 						CreatedOnToolsVersion = 15.0;
+						LastSwiftMigration = 1500;
 						TestTargetID = DF1E0D2F2AD0720C0074133C;
 					};
 				};
@@ -235,7 +240,6 @@
 				DF1E0D362AD0720C0074133C /* ContentView.swift in Sources */,
 				DF1E0D342AD0720C0074133C /* passage_ios_uitest_appApp.swift in Sources */,
 				DF771AAC2AD0789700AF810B /* Constants.swift in Sources */,
-				DF771AAE2AD0797C00AF810B /* Helpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,8 +248,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF771AB72AD0A60000AF810B /* passage_ios_uitest_appUITests.swift in Sources */,
-				DF771AB92AD0A60000AF810B /* passage_ios_uitest_appUITestsLaunchTests.swift in Sources */,
+				DFC295D12AD0AB3E0074733A /* Biometrics.m in Sources */,
 				DFC295CC2AD0A7840074733A /* Constants.swift in Sources */,
+				DFC295CD2AD0A8420074733A /* Helpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,18 +460,24 @@
 		DF771ABD2AD0A60000AF810B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LKQWMG6BWA;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "id.passage.passage-ios-uitest-appUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "passage-ios-uitest-appUITests/passage-ios-uitest-appUITests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_TARGET_NAME = "passage-ios-uitest-app";
 			};
 			name = Debug;
@@ -474,18 +485,23 @@
 		DF771ABE2AD0A60000AF810B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LKQWMG6BWA;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "id.passage.passage-ios-uitest-appUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "passage-ios-uitest-appUITests/passage-ios-uitest-appUITests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_TARGET_NAME = "passage-ios-uitest-app";
 				VALIDATE_PRODUCT = YES;
 			};
