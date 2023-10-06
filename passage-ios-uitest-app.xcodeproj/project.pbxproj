@@ -11,7 +11,23 @@
 		DF1E0D362AD0720C0074133C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1E0D352AD0720C0074133C /* ContentView.swift */; };
 		DF1E0D382AD0720D0074133C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF1E0D372AD0720D0074133C /* Assets.xcassets */; };
 		DF1E0D3C2AD0720D0074133C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF1E0D3B2AD0720D0074133C /* Preview Assets.xcassets */; };
+		DF771AAA2AD075B400AF810B /* Passage in Frameworks */ = {isa = PBXBuildFile; productRef = DF771AA92AD075B400AF810B /* Passage */; };
+		DF771AAC2AD0789700AF810B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF771AAB2AD0789700AF810B /* Constants.swift */; };
+		DF771AAE2AD0797C00AF810B /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF771AAD2AD0797C00AF810B /* Helpers.swift */; };
+		DF771AB72AD0A60000AF810B /* passage_ios_uitest_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF771AB62AD0A60000AF810B /* passage_ios_uitest_appUITests.swift */; };
+		DF771AB92AD0A60000AF810B /* passage_ios_uitest_appUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF771AB82AD0A60000AF810B /* passage_ios_uitest_appUITestsLaunchTests.swift */; };
+		DFC295CC2AD0A7840074733A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF771AAB2AD0789700AF810B /* Constants.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DF771ABA2AD0A60000AF810B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DF1E0D282AD0720C0074133C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DF1E0D2F2AD0720C0074133C;
+			remoteInfo = "passage-ios-uitest-app";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		DF1E0D302AD0720C0074133C /* passage-ios-uitest-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "passage-ios-uitest-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -20,10 +36,24 @@
 		DF1E0D372AD0720D0074133C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DF1E0D392AD0720D0074133C /* passage_ios_uitest_app.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = passage_ios_uitest_app.entitlements; sourceTree = "<group>"; };
 		DF1E0D3B2AD0720D0074133C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DF771AA72AD0759400AF810B /* passage-ios */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "passage-ios"; path = "../../passage-ios"; sourceTree = "<group>"; };
+		DF771AAB2AD0789700AF810B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		DF771AAD2AD0797C00AF810B /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		DF771AB42AD0A60000AF810B /* passage-ios-uitest-appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "passage-ios-uitest-appUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF771AB62AD0A60000AF810B /* passage_ios_uitest_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = passage_ios_uitest_appUITests.swift; sourceTree = "<group>"; };
+		DF771AB82AD0A60000AF810B /* passage_ios_uitest_appUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = passage_ios_uitest_appUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		DF1E0D2D2AD0720C0074133C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF771AAA2AD075B400AF810B /* Passage in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF771AB12AD0A60000AF810B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -36,8 +66,11 @@
 		DF1E0D272AD0720C0074133C = {
 			isa = PBXGroup;
 			children = (
+				DFC295CB2AD0A76B0074733A /* shared */,
 				DF1E0D322AD0720C0074133C /* passage-ios-uitest-app */,
+				DF771AB52AD0A60000AF810B /* passage-ios-uitest-appUITests */,
 				DF1E0D312AD0720C0074133C /* Products */,
+				DF771AA82AD075B400AF810B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -45,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				DF1E0D302AD0720C0074133C /* passage-ios-uitest-app.app */,
+				DF771AB42AD0A60000AF810B /* passage-ios-uitest-appUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -52,8 +86,10 @@
 		DF1E0D322AD0720C0074133C /* passage-ios-uitest-app */ = {
 			isa = PBXGroup;
 			children = (
+				DF771AA72AD0759400AF810B /* passage-ios */,
 				DF1E0D332AD0720C0074133C /* passage_ios_uitest_appApp.swift */,
 				DF1E0D352AD0720C0074133C /* ContentView.swift */,
+				DF771AAD2AD0797C00AF810B /* Helpers.swift */,
 				DF1E0D372AD0720D0074133C /* Assets.xcassets */,
 				DF1E0D392AD0720D0074133C /* passage_ios_uitest_app.entitlements */,
 				DF1E0D3A2AD0720D0074133C /* Preview Content */,
@@ -67,6 +103,30 @@
 				DF1E0D3B2AD0720D0074133C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DF771AA82AD075B400AF810B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DF771AB52AD0A60000AF810B /* passage-ios-uitest-appUITests */ = {
+			isa = PBXGroup;
+			children = (
+				DF771AB62AD0A60000AF810B /* passage_ios_uitest_appUITests.swift */,
+				DF771AB82AD0A60000AF810B /* passage_ios_uitest_appUITestsLaunchTests.swift */,
+			);
+			path = "passage-ios-uitest-appUITests";
+			sourceTree = "<group>";
+		};
+		DFC295CB2AD0A76B0074733A /* shared */ = {
+			isa = PBXGroup;
+			children = (
+				DF771AAB2AD0789700AF810B /* Constants.swift */,
+			);
+			path = shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -85,9 +145,30 @@
 			dependencies = (
 			);
 			name = "passage-ios-uitest-app";
+			packageProductDependencies = (
+				DF771AA92AD075B400AF810B /* Passage */,
+			);
 			productName = "passage-ios-uitest-app";
 			productReference = DF1E0D302AD0720C0074133C /* passage-ios-uitest-app.app */;
 			productType = "com.apple.product-type.application";
+		};
+		DF771AB32AD0A60000AF810B /* passage-ios-uitest-appUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DF771ABC2AD0A60000AF810B /* Build configuration list for PBXNativeTarget "passage-ios-uitest-appUITests" */;
+			buildPhases = (
+				DF771AB02AD0A60000AF810B /* Sources */,
+				DF771AB12AD0A60000AF810B /* Frameworks */,
+				DF771AB22AD0A60000AF810B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DF771ABB2AD0A60000AF810B /* PBXTargetDependency */,
+			);
+			name = "passage-ios-uitest-appUITests";
+			productName = "passage-ios-uitest-appUITests";
+			productReference = DF771AB42AD0A60000AF810B /* passage-ios-uitest-appUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -101,6 +182,10 @@
 				TargetAttributes = {
 					DF1E0D2F2AD0720C0074133C = {
 						CreatedOnToolsVersion = 15.0;
+					};
+					DF771AB32AD0A60000AF810B = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = DF1E0D2F2AD0720C0074133C;
 					};
 				};
 			};
@@ -118,6 +203,7 @@
 			projectRoot = "";
 			targets = (
 				DF1E0D2F2AD0720C0074133C /* passage-ios-uitest-app */,
+				DF771AB32AD0A60000AF810B /* passage-ios-uitest-appUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -132,6 +218,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DF771AB22AD0A60000AF810B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -141,10 +234,30 @@
 			files = (
 				DF1E0D362AD0720C0074133C /* ContentView.swift in Sources */,
 				DF1E0D342AD0720C0074133C /* passage_ios_uitest_appApp.swift in Sources */,
+				DF771AAC2AD0789700AF810B /* Constants.swift in Sources */,
+				DF771AAE2AD0797C00AF810B /* Helpers.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF771AB02AD0A60000AF810B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF771AB72AD0A60000AF810B /* passage_ios_uitest_appUITests.swift in Sources */,
+				DF771AB92AD0A60000AF810B /* passage_ios_uitest_appUITestsLaunchTests.swift in Sources */,
+				DFC295CC2AD0A7840074733A /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DF771ABB2AD0A60000AF810B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DF1E0D2F2AD0720C0074133C /* passage-ios-uitest-app */;
+			targetProxy = DF771ABA2AD0A60000AF810B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		DF1E0D3D2AD0720D0074133C /* Debug */ = {
@@ -289,13 +402,14 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.6;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "id.passage.passage-ios-uitest-app";
+				PRODUCT_BUNDLE_IDENTIFIER = "id.passage.uat-test-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -327,13 +441,53 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.6;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "id.passage.passage-ios-uitest-app";
+				PRODUCT_BUNDLE_IDENTIFIER = "id.passage.uat-test-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		DF771ABD2AD0A60000AF810B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LKQWMG6BWA;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "id.passage.passage-ios-uitest-appUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "passage-ios-uitest-app";
+			};
+			name = Debug;
+		};
+		DF771ABE2AD0A60000AF810B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LKQWMG6BWA;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "id.passage.passage-ios-uitest-appUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "passage-ios-uitest-app";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -358,7 +512,23 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		DF771ABC2AD0A60000AF810B /* Build configuration list for PBXNativeTarget "passage-ios-uitest-appUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DF771ABD2AD0A60000AF810B /* Debug */,
+				DF771ABE2AD0A60000AF810B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DF771AA92AD075B400AF810B /* Passage */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Passage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DF1E0D282AD0720C0074133C /* Project object */;
 }
