@@ -13,10 +13,10 @@
 		DF1E0D3C2AD0720D0074133C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF1E0D3B2AD0720D0074133C /* Preview Assets.xcassets */; };
 		DF771AAC2AD0789700AF810B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF771AAB2AD0789700AF810B /* Constants.swift */; };
 		DF771AB72AD0A60000AF810B /* passage_ios_uitest_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF771AB62AD0A60000AF810B /* passage_ios_uitest_appUITests.swift */; };
-		DF89A9262AF0427B00A2CE07 /* Passage in Frameworks */ = {isa = PBXBuildFile; productRef = DF89A9252AF0427B00A2CE07 /* Passage */; };
 		DFC295CC2AD0A7840074733A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF771AAB2AD0789700AF810B /* Constants.swift */; };
 		DFC295CD2AD0A8420074733A /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF771AAD2AD0797C00AF810B /* Helpers.swift */; };
 		DFC295D12AD0AB3E0074733A /* Biometrics.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC295D02AD0AB3E0074733A /* Biometrics.m */; };
+		DFFFC5222AF05FEC00915846 /* Passage in Frameworks */ = {isa = PBXBuildFile; productRef = DFFFC5212AF05FEC00915846 /* Passage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF89A9262AF0427B00A2CE07 /* Passage in Frameworks */,
+				DFFFC5222AF05FEC00915846 /* Passage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,7 +148,7 @@
 			);
 			name = "passage-ios-uitest-app";
 			packageProductDependencies = (
-				DF89A9252AF0427B00A2CE07 /* Passage */,
+				DFFFC5212AF05FEC00915846 /* Passage */,
 			);
 			productName = "passage-ios-uitest-app";
 			productReference = DF1E0D302AD0720C0074133C /* passage-ios-uitest-app.app */;
@@ -202,7 +202,7 @@
 			);
 			mainGroup = DF1E0D272AD0720C0074133C;
 			packageReferences = (
-				DF89A9242AF0427B00A2CE07 /* XCRemoteSwiftPackageReference "passage-ios" */,
+				DFFFC5202AF05FEC00915846 /* XCRemoteSwiftPackageReference "passage-ios" */,
 			);
 			productRefGroup = DF1E0D312AD0720C0074133C /* Products */;
 			projectDirPath = "";
@@ -541,9 +541,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		DF89A9242AF0427B00A2CE07 /* XCRemoteSwiftPackageReference "passage-ios" */ = {
+		DFFFC5202AF05FEC00915846 /* XCRemoteSwiftPackageReference "passage-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "/Users/rickypadilla/passage/passage-ios";
+			repositoryURL = "https://github.com/passageidentity/passage-ios";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.2.0;
@@ -552,9 +552,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		DF89A9252AF0427B00A2CE07 /* Passage */ = {
+		DFFFC5212AF05FEC00915846 /* Passage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = DF89A9242AF0427B00A2CE07 /* XCRemoteSwiftPackageReference "passage-ios" */;
+			package = DFFFC5202AF05FEC00915846 /* XCRemoteSwiftPackageReference "passage-ios" */;
 			productName = Passage;
 		};
 /* End XCSwiftPackageProductDependency section */
