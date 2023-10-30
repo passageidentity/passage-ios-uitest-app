@@ -17,14 +17,17 @@ struct ContentView: View {
     }
     
     @State var identifier: String = ""
+    @FocusState var textFieldIsFocused: Bool
     @State var isShowingSuccessAlert = false
     @State var isShowingFailureAlert = false
     @State var authToken = ""
+    @State var failureMessage = ""
     
     var body: some View {
         VStack {
             TextField(Constants.textFieldLabel, text: $identifier)
                 .textFieldStyle(.roundedBorder)
+                .focused($textFieldIsFocused)
             Button(Constants.registerPasskeyButton, action: registerWithPasskey)
             Button(Constants.loginPasskeyButton, action: loginWithPasskey)
             
@@ -32,29 +35,35 @@ struct ContentView: View {
         .alert(Constants.successLabel, isPresented: $isShowingSuccessAlert) {} message: {
             Text("\(Constants.authTokenLabel)\(authToken)")
         }
-        .alert(Constants.failureLabel, isPresented: $isShowingFailureAlert) {}
+        .alert(Constants.failureLabel, isPresented: $isShowingFailureAlert) {} message: {
+            Text(failureMessage)
+        }
         .padding()
     }
     
     func registerWithPasskey() {
+        textFieldIsFocused = false
         Task {
             do {
                 let authResult = try await passage.registerWithPasskey(identifier: identifier)
                 authToken = authResult.authToken
                 isShowingSuccessAlert = true
             } catch {
+                failureMessage = error.localizedDescription
                 isShowingFailureAlert = true
             }
         }
     }
     
     func loginWithPasskey() {
+        textFieldIsFocused = false
         Task {
             do {
                 let authResult = try await passage.loginWithPasskey()
                 authToken = authResult.authToken
                 isShowingSuccessAlert = true
             } catch {
+                failureMessage = error.localizedDescription
                 isShowingFailureAlert = true
             }
         }

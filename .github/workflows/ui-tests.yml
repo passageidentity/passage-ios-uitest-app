@@ -1,0 +1,17 @@
+name: ui-tests passage-ios-uitest-app
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  ui-test-iOS-17:
+    name: Build and UI Test iOS 17
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Test iOS 17.0.1
+        run: xcodebuild clean test -scheme 'passage-ios-uitest-app' -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.0.1'

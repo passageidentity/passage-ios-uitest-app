@@ -7,13 +7,16 @@
 
 import XCTest
 
+let passkeyUIRetryCount: Int = 3
+let passkeyContinueButtonWaitTime: TimeInterval = 5
+
 final class passage_ios_uitest_appUITests: XCTestCase {
     let app = XCUIApplication()
     
     // Shows permissions alerts (like native passkey UI) on top of the app.
     let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
 
-    func testSuccessfulPasskeyRegistration() {
+    func testSuccessfulPasskeyCreation() {
         // Enroll simulator in biometrics - Face ID or Touch ID.
         Biometrics.enrolled()
         app.launch()
@@ -22,8 +25,22 @@ final class passage_ios_uitest_appUITests: XCTestCase {
         textField.typeText(Helpers.newUserEmail())
         app.buttons[Constants.registerPasskeyButton].tap()
         // Check if iOS passkey alert and button appear.
-        let passkeyContinueButton = springboard.staticTexts[Constants.systemContinueButton].firstMatch
-        XCTAssertTrue(passkeyContinueButton.waitForExistence(timeout: 5))
+        var passkeyContinueButtonIsDisplayed = false
+        var passkeyContinueButton = springboard.staticTexts[Constants.systemContinueButton].firstMatch
+        // NOTE: When starting up simulator, device takes a while to get ASAuthorization service to a usable state.
+        // So we retry up to `passkeyUIRetryCount` times.
+        for _ in 1...passkeyUIRetryCount {
+            // NOTE: The native passkey UI ALWAYS takes some time to appear - even when successful.
+            // So we wait for existence for `passkeyContinueButtonWaitTime` seconds.
+            passkeyContinueButtonIsDisplayed = passkeyContinueButton.waitForExistence(timeout: passkeyContinueButtonWaitTime)
+            if passkeyContinueButtonIsDisplayed {
+                break
+            } else {
+                // Dismiss failure alert and try again.
+                app.buttons["OK"].tap()
+                app.buttons[Constants.registerPasskeyButton].tap()
+            }
+        }
         passkeyContinueButton.tap()
         // Simulate a successful biometric scan.
         Biometrics.successfulAuthentication()
@@ -42,7 +59,7 @@ final class passage_ios_uitest_appUITests: XCTestCase {
         app.buttons[Constants.loginPasskeyButton].tap()
         // Check if iOS passkey alert and button appear.
         let passkeyContinueButton = springboard.staticTexts[Constants.systemContinueButton].firstMatch
-        XCTAssertTrue(passkeyContinueButton.waitForExistence(timeout: 5))
+        XCTAssertTrue(passkeyContinueButton.waitForExistence(timeout: passkeyContinueButtonWaitTime))
         passkeyContinueButton.tap()
         // Simulate a successful biometric scan.
         Biometrics.successfulAuthentication()
