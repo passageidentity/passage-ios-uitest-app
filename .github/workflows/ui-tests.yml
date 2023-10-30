@@ -8,7 +8,7 @@ on:
 jobs:
   ui-test-iOS-17:
     name: Build and UI Test iOS 17
-    runs-on: macos-latest
+    runs-on: macos-13
     steps:
       - name: Checkout
         uses: actions/checkout@v2
