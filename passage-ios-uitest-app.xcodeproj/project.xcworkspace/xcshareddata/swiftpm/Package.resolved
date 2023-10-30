@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "passage-ios",
+      "kind" : "localSourceControl",
+      "location" : "/Users/rickypadilla/passage/passage-ios",
+      "state" : {
+        "revision" : "9feb94b38fd64ffc6e4a510b2e5530e3b34dc868",
+        "version" : "1.2.0"
+      }
+    },
+    {
       "identity" : "swiftkeychainwrapper",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/jrendel/SwiftKeychainWrapper",
