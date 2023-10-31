@@ -19,14 +19,18 @@ final class passage_ios_uitest_appUITests: XCTestCase {
     func testSuccessfulPasskeyCreation() {
         // Enroll simulator in biometrics - Face ID or Touch ID.
         Biometrics.enrolled()
+        print("🔵 Attempted device biometrics enrollment")
         app.launch()
+        print("🔵 Launching app")
         let textField = app.textFields[Constants.textFieldLabel]
         textField.tap()
         textField.typeText(Helpers.newUserEmail())
+        print("🔵 Typed email")
         app.buttons[Constants.registerPasskeyButton].tap()
+        print("🔵 Tapped register button")
         // Check if iOS passkey alert and button appear.
         var passkeyContinueButtonIsDisplayed = false
-        var passkeyContinueButton = springboard.staticTexts[Constants.systemContinueButton].firstMatch
+        let passkeyContinueButton = springboard.staticTexts[Constants.systemContinueButton].firstMatch
         // NOTE: When starting up simulator, device takes a while to get ASAuthorization service to a usable state.
         // So we retry up to `passkeyUIRetryCount` times.
         for _ in 1...passkeyUIRetryCount {
@@ -36,17 +40,22 @@ final class passage_ios_uitest_appUITests: XCTestCase {
             if passkeyContinueButtonIsDisplayed {
                 break
             } else {
+                print("⚠️ passkey ui not appearing, try again...")
                 // Dismiss failure alert and try again.
                 app.buttons["OK"].tap()
                 app.buttons[Constants.registerPasskeyButton].tap()
             }
         }
+        XCTAssertTrue(passkeyContinueButton.exists)
+        print("🔵 Passkey UI appeared, tap continue")
         passkeyContinueButton.tap()
         // Simulate a successful biometric scan.
         Biometrics.successfulAuthentication()
+        print("🔵 Attempt successful biometric auth")
         // If passkey flow is successful, the app should show a success alert along with the Passage auth token.
         let successAlert = app.alerts[Constants.successLabel].firstMatch
         XCTAssertTrue(successAlert.waitForExistence(timeout: 5))
+        print("🔵 Success alert appeared")
         let predicate = NSPredicate(format: "label BEGINSWITH '\(Constants.authTokenLabel)'")
         let authTokenMessage = successAlert.scrollViews.otherElements.staticTexts.matching(predicate).element(boundBy: 0).label
         XCTAssertTrue(authTokenMessage.count > Constants.authTokenLabel.count)
