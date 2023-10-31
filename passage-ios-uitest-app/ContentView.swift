@@ -49,6 +49,8 @@ struct ContentView: View {
                 authToken = authResult.authToken
                 isShowingSuccessAlert = true
             } catch {
+                print("⛔️ Error registering with passkey")
+                print(error.localizedDescription)
                 failureMessage = error.localizedDescription
                 isShowingFailureAlert = true
             }
@@ -63,6 +65,8 @@ struct ContentView: View {
                 authToken = authResult.authToken
                 isShowingSuccessAlert = true
             } catch {
+                print("⛔️ Error logging in with passkey")
+                print(error.localizedDescription)
                 failureMessage = error.localizedDescription
                 isShowingFailureAlert = true
             }
