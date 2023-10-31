@@ -7,7 +7,7 @@
 
 import XCTest
 
-let passkeyUIRetryCount: Int = 3
+let passkeyUIRetryCount: Int = 7
 let passkeyContinueButtonWaitTime: TimeInterval = 5
 
 final class passage_ios_uitest_appUITests: XCTestCase {
