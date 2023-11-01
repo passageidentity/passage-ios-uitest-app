@@ -1,20 +1,38 @@
 name: ui-tests passage-ios-uitest-app
+
 on:
   workflow_dispatch:
   push:
     branches:
       - main
+  repository_dispatch:
+    types: [swift-package-update]
 
 jobs:
-  ui-test-iOS-17:
+  setup-swift-package:
+    if: github.event_name == 'repository_dispatch'
+    runs-on: ubuntu-latest
+    outputs:
+      ref: ${{ steps.set-ref.outputs.ref }}
+    steps:
+    - name: Set Swift Package PR ref
+      id: set-ref
+      run: |
+        echo "::set-output name=ref::${{ github.event.client_payload.ref }}"
+
+  ui-test-iOS-16:
+    needs: [setup-swift-package]
     name: Build and UI Test iOS 16
     runs-on: macos-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
-      # - name: Set Xcode Version
-      #   run: sudo xcode-select -switch /Applications/Xcode_15.0.1.app
+      - name: Update Swift Package Dependency
+        if: github.event_name == 'repository_dispatch'
+        run: |
+          # Assuming you're using Swift Package Manager and have a Package.swift file
+          sed -i.bak "s|https://github.com/passageidentity/passage-ios.git@main|https://github.com/passageidentity/passage-ios.git@${{ needs.setup-swift-package.outputs.ref }}|g" Package.swift
 
       - name: Test iOS 16.2
         run: xcodebuild clean test -scheme 'passage-ios-uitest-app' -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.2'
