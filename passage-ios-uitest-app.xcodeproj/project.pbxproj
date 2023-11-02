@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9370D5F0AD403347922E7A42 /* libPods-passage-ios-uitest-app.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB5592062F5E372C89668A31 /* libPods-passage-ios-uitest-app.a */; };
 		DF1E0D342AD0720C0074133C /* passage_ios_uitest_appApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1E0D332AD0720C0074133C /* passage_ios_uitest_appApp.swift */; };
 		DF1E0D362AD0720C0074133C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1E0D352AD0720C0074133C /* ContentView.swift */; };
 		DF1E0D382AD0720D0074133C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF1E0D372AD0720D0074133C /* Assets.xcassets */; };
@@ -16,7 +17,6 @@
 		DFC295CC2AD0A7840074733A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF771AAB2AD0789700AF810B /* Constants.swift */; };
 		DFC295CD2AD0A8420074733A /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF771AAD2AD0797C00AF810B /* Helpers.swift */; };
 		DFC295D12AD0AB3E0074733A /* Biometrics.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC295D02AD0AB3E0074733A /* Biometrics.m */; };
-		DFFFC5222AF05FEC00915846 /* Passage in Frameworks */ = {isa = PBXBuildFile; productRef = DFFFC5212AF05FEC00915846 /* Passage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +30,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		687338A26BE75DFDDC6302C5 /* Pods-passage-ios-uitest-app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-passage-ios-uitest-app.debug.xcconfig"; path = "Target Support Files/Pods-passage-ios-uitest-app/Pods-passage-ios-uitest-app.debug.xcconfig"; sourceTree = "<group>"; };
+		CB5592062F5E372C89668A31 /* libPods-passage-ios-uitest-app.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-passage-ios-uitest-app.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC768C6E58742A086DAB7298 /* Pods-passage-ios-uitest-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-passage-ios-uitest-app.release.xcconfig"; path = "Target Support Files/Pods-passage-ios-uitest-app/Pods-passage-ios-uitest-app.release.xcconfig"; sourceTree = "<group>"; };
 		DF1E0D302AD0720C0074133C /* passage-ios-uitest-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "passage-ios-uitest-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF1E0D332AD0720C0074133C /* passage_ios_uitest_appApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = passage_ios_uitest_appApp.swift; sourceTree = "<group>"; };
 		DF1E0D352AD0720C0074133C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -50,7 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DFFFC5222AF05FEC00915846 /* Passage in Frameworks */,
+				9370D5F0AD403347922E7A42 /* libPods-passage-ios-uitest-app.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +67,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C4691845BFAF567552203FD7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				687338A26BE75DFDDC6302C5 /* Pods-passage-ios-uitest-app.debug.xcconfig */,
+				DC768C6E58742A086DAB7298 /* Pods-passage-ios-uitest-app.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		DF1E0D272AD0720C0074133C = {
 			isa = PBXGroup;
 			children = (
@@ -72,6 +85,7 @@
 				DF771AB52AD0A60000AF810B /* passage-ios-uitest-appUITests */,
 				DF1E0D312AD0720C0074133C /* Products */,
 				DF771AA82AD075B400AF810B /* Frameworks */,
+				C4691845BFAF567552203FD7 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -107,6 +121,7 @@
 		DF771AA82AD075B400AF810B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CB5592062F5E372C89668A31 /* libPods-passage-ios-uitest-app.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -138,6 +153,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DF1E0D3F2AD0720D0074133C /* Build configuration list for PBXNativeTarget "passage-ios-uitest-app" */;
 			buildPhases = (
+				F159CE115959B73384C0A6D7 /* [CP] Check Pods Manifest.lock */,
 				DF1E0D2C2AD0720C0074133C /* Sources */,
 				DF1E0D2D2AD0720C0074133C /* Frameworks */,
 				DF1E0D2E2AD0720C0074133C /* Resources */,
@@ -147,9 +163,6 @@
 			dependencies = (
 			);
 			name = "passage-ios-uitest-app";
-			packageProductDependencies = (
-				DFFFC5212AF05FEC00915846 /* Passage */,
-			);
 			productName = "passage-ios-uitest-app";
 			productReference = DF1E0D302AD0720C0074133C /* passage-ios-uitest-app.app */;
 			productType = "com.apple.product-type.application";
@@ -201,9 +214,6 @@
 				Base,
 			);
 			mainGroup = DF1E0D272AD0720C0074133C;
-			packageReferences = (
-				DFFFC5202AF05FEC00915846 /* XCRemoteSwiftPackageReference "passage-ios" */,
-			);
 			productRefGroup = DF1E0D312AD0720C0074133C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -232,6 +242,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F159CE115959B73384C0A6D7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-passage-ios-uitest-app-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DF1E0D2C2AD0720C0074133C /* Sources */ = {
@@ -382,6 +417,7 @@
 		};
 		DF1E0D402AD0720D0074133C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 687338A26BE75DFDDC6302C5 /* Pods-passage-ios-uitest-app.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -421,6 +457,7 @@
 		};
 		DF1E0D412AD0720D0074133C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC768C6E58742A086DAB7298 /* Pods-passage-ios-uitest-app.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -539,25 +576,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		DFFFC5202AF05FEC00915846 /* XCRemoteSwiftPackageReference "passage-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/passageidentity/passage-ios";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.2.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		DFFFC5212AF05FEC00915846 /* Passage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DFFFC5202AF05FEC00915846 /* XCRemoteSwiftPackageReference "passage-ios" */;
-			productName = Passage;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DF1E0D282AD0720C0074133C /* Project object */;
 }

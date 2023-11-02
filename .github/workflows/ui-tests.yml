@@ -1,38 +1,26 @@
 name: ui-tests passage-ios-uitest-app
-
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-  repository_dispatch:
-    types: [swift-package-update]
+    inputs:
+      passage_ios_branch_name:
+        description: 'Branch name from the Passage iOS PR'
+        required: true
 
 jobs:
-  setup-swift-package:
-    if: github.event_name == 'repository_dispatch'
-    runs-on: ubuntu-latest
-    outputs:
-      ref: ${{ steps.set-ref.outputs.ref }}
-    steps:
-    - name: Set Swift Package PR ref
-      id: set-ref
-      run: |
-        echo "::set-output name=ref::${{ github.event.client_payload.ref }}"
-
   ui-test-iOS-16:
-    needs: [setup-swift-package]
     name: Build and UI Test iOS 16
     runs-on: macos-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Update Swift Package Dependency
-        if: github.event_name == 'repository_dispatch'
+      - name: Install dependencies
         run: |
-          # Assuming you're using Swift Package Manager and have a Package.swift file
-          sed -i.bak "s|https://github.com/passageidentity/passage-ios.git@main|https://github.com/passageidentity/passage-ios.git@${{ needs.setup-swift-package.outputs.ref }}|g" Package.swift
+          # Update the Podfile to use the branch version of the Passage pod
+          sed -i.bak -e "s|pod 'Passage'|pod 'Passage', :git => 'https://github.com/passageidentity/passage-ios.git', :branch => '${{ github.event.inputs.passage_ios_branch_name }}'|" Podfile
+          # Install the pods
+          pod install
+        shell: bash
 
       - name: Test iOS 16.2
-        run: xcodebuild clean test -scheme 'passage-ios-uitest-app' -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.2'
+        run: xcodebuild clean test -workspace 'passage-ios-uitest-app.xcworkspace' -scheme 'passage-ios-uitest-app' -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.2'
