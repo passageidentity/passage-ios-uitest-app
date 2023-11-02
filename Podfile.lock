@@ -1,0 +1,20 @@
+PODS:
+  - Passage (1.2.0):
+    - SwiftKeychainWrapper
+  - SwiftKeychainWrapper (4.0.1)
+
+DEPENDENCIES:
+  - Passage
+
+SPEC REPOS:
+  trunk:
+    - Passage
+    - SwiftKeychainWrapper
+
+SPEC CHECKSUMS:
+  Passage: 623d579acf6cf9949f6c16c777b7efe6f6902d93
+  SwiftKeychainWrapper: 807ba1d63c33a7d0613288512399cd1eda1e470c
+
+PODFILE CHECKSUM: 7d46de6c69198ac640e1e796f0ff89f78047c3a0
+
+COCOAPODS: 1.12.1
