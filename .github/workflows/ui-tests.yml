@@ -7,8 +7,8 @@ on:
         required: true
 
 jobs:
-  ui-test-iOS-16:
-    name: Build and UI Test iOS 16
+  ui-test-iOS:
+    name: Build and UI Test iOS
     runs-on: macos-latest
     steps:
       - name: Checkout
@@ -22,8 +22,14 @@ jobs:
           pod install
         shell: bash
 
-      - name: Test iOS 16.2
-        run: xcodebuild clean build-for-testing test -workspace 'passage-ios-uitest-app.xcworkspace' -scheme 'passage-ios-uitest-app' -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 15' clean test | tee test_output.log | xcpretty --report junit --output junit.xml
+      - name: Test iOS
+        run: |
+          xcodebuild clean build-for-testing test \
+          -workspace 'passage-ios-uitest-app.xcworkspace' \
+          -scheme 'passage-ios-uitest-app' \
+          -sdk iphonesimulator \
+          -destination 'platform=iOS Simulator,name=iPhone 15' \
+          clean test | tee test_output.log | xcpretty --report junit --output junit.xml
       
       - name: Upload test results
         if: failure()
