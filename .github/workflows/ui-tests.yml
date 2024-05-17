@@ -23,4 +23,4 @@ jobs:
         shell: bash
 
       - name: Test iOS 16.2
-        run: xcodebuild clean test -workspace 'passage-ios-uitest-app.xcworkspace' -scheme 'passage-ios-uitest-app' -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.2'
+        run: xcodebuild clean build-for-testing test -workspace 'passage-ios-uitest-app.xcworkspace' -scheme 'passage-ios-uitest-app' -destination 'platform=iOS Simulator,name=iPhone 15'
