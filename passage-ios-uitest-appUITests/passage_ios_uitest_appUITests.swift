@@ -19,15 +19,11 @@ final class passage_ios_uitest_appUITests: XCTestCase {
     func testSuccessfulPasskeyCreation() {
         // Enroll simulator in biometrics - Face ID or Touch ID.
         Biometrics.enrolled()
-        print("🔵 Attempted device biometrics enrollment")
         app.launch()
-        print("🔵 Launching app")
         let textField = app.textFields[Constants.textFieldLabel]
         textField.tap()
         textField.typeText(Helpers.newUserEmail())
-        print("🔵 Typed email")
         app.buttons[Constants.registerPasskeyButton].tap()
-        print("🔵 Tapped register button")
         // Check if iOS passkey alert and button appear.
         var passkeyContinueButtonIsDisplayed = false
         let passkeyContinueButton = springboard.staticTexts[Constants.systemContinueButton].firstMatch
@@ -47,15 +43,12 @@ final class passage_ios_uitest_appUITests: XCTestCase {
             }
         }
         XCTAssertTrue(passkeyContinueButton.exists)
-        print("🔵 Passkey UI appeared, tap continue")
         passkeyContinueButton.tap()
         // Simulate a successful biometric scan.
         Biometrics.successfulAuthentication()
-        print("🔵 Attempt successful biometric auth")
         // If passkey flow is successful, the app should show a success alert along with the Passage auth token.
         let successAlert = app.alerts[Constants.successLabel].firstMatch
         XCTAssertTrue(successAlert.waitForExistence(timeout: 5))
-        print("🔵 Success alert appeared")
         let predicate = NSPredicate(format: "label BEGINSWITH '\(Constants.authTokenLabel)'")
         let authTokenMessage = successAlert.scrollViews.otherElements.staticTexts.matching(predicate).element(boundBy: 0).label
         XCTAssertTrue(authTokenMessage.count > Constants.authTokenLabel.count)
