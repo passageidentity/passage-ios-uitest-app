@@ -103,11 +103,11 @@ final class passage_ios_uitest_appUITests: XCTestCase {
         
         // PART TWO: REGISTER NEW ACCOUNT IN WEB VIEW USING PASSKEY
         let webView = app.webViews
-        webView.buttons["Register here."].tap()
-        webView.textFields["example@email.com"].tap()
-        webView.textFields["example@email.com"].typeText(Helpers.newUserEmail())
-        webView.buttons["Continue"].tap()
-        webView.buttons["Register with passkey"].tap()
+        webView.buttons[Constants.registerHereButton].tap()
+        webView.textFields[Constants.emailPlaceholder].tap()
+        webView.textFields[Constants.emailPlaceholder].typeText(Helpers.newUserEmail())
+        webView.buttons[Constants.webContinueButton].tap()
+        webView.buttons[Constants.webPasskeyRegisterButton].tap()
         // Check if iOS passkey alert and button appear.
         let passkeyContinueButton = springboard.staticTexts[Constants.systemContinueButton].firstMatch
         XCTAssertTrue(passkeyContinueButton.waitForExistence(timeout: authUIWaitTime))
