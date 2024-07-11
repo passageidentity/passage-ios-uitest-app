@@ -20,5 +20,4 @@ struct Constants {
     static let hostedLogoutButton = "hosted logout"
     static let systemContinueButton = "Continue"
     static let authTokenLabel = "auth token: "
-    static let webAuthSessionPromptEnd = "to Sign In"
 }

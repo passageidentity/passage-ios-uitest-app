@@ -7,8 +7,9 @@
 
 import XCTest
 
-let passkeyUIRetryCount: Int = 7
-let passkeyContinueButtonWaitTime: TimeInterval = 5
+let authUIRetryCount: Int = 7
+let authUIWaitTime: TimeInterval = 5
+let webAuthAlertTitle = "“passage-ios-uitest-app” Wants to Use “withpassage-uat.com” to Sign In"
 
 final class passage_ios_uitest_appUITests: XCTestCase {
     let app = XCUIApplication()
@@ -28,11 +29,11 @@ final class passage_ios_uitest_appUITests: XCTestCase {
         var passkeyContinueButtonIsDisplayed = false
         let passkeyContinueButton = springboard.staticTexts[Constants.systemContinueButton].firstMatch
         // NOTE: When starting up simulator, device takes a while to get ASAuthorization service to a usable state.
-        // So we retry up to `passkeyUIRetryCount` times.
-        for _ in 1...passkeyUIRetryCount {
+        // So we retry up to `authUIRetryCount` times.
+        for _ in 1...authUIRetryCount {
             // NOTE: The native passkey UI ALWAYS takes some time to appear - even when successful.
             // So we wait for existence for `passkeyContinueButtonWaitTime` seconds.
-            passkeyContinueButtonIsDisplayed = passkeyContinueButton.waitForExistence(timeout: passkeyContinueButtonWaitTime)
+            passkeyContinueButtonIsDisplayed = passkeyContinueButton.waitForExistence(timeout: authUIWaitTime)
             if passkeyContinueButtonIsDisplayed {
                 break
             } else {
@@ -61,7 +62,7 @@ final class passage_ios_uitest_appUITests: XCTestCase {
         app.buttons[Constants.loginPasskeyButton].tap()
         // Check if iOS passkey alert and button appear.
         let passkeyContinueButton = springboard.staticTexts[Constants.systemContinueButton].firstMatch
-        XCTAssertTrue(passkeyContinueButton.waitForExistence(timeout: passkeyContinueButtonWaitTime))
+        XCTAssertTrue(passkeyContinueButton.waitForExistence(timeout: authUIWaitTime))
         passkeyContinueButton.tap()
         // Simulate a successful biometric scan.
         Biometrics.successfulAuthentication()
@@ -72,47 +73,45 @@ final class passage_ios_uitest_appUITests: XCTestCase {
         let authTokenMessage = successAlert.scrollViews.otherElements.staticTexts.matching(predicate).element(boundBy: 0).label
         XCTAssertTrue(authTokenMessage.count > Constants.authTokenLabel.count)
     }
-    
-    
     
     func testHostedAuth() {
         // Enroll simulator in biometrics - Face ID or Touch ID.
         Biometrics.enrolled()
         app.launch()
+        
+        // PART ONE: OPEN HOSTED LOGIN WEB VIEW
         app.buttons[Constants.hostedAuthButton].tap()
-        
-        // Check if web auth session alert and button appear.
-        let alert = springboard.alerts["“passage-ios-uitest-app” Wants to Use “withpassage-uat.com” to Sign In"]
-        XCTAssertTrue(alert.waitForExistence(timeout: passkeyContinueButtonWaitTime))
-        alert.scrollViews.otherElements.buttons["Continue"].tap()
-        
-        app/*@START_MENU_TOKEN@*/.webViews.webViews.webViews.buttons["Register here."]/*[[".otherElements[\"BrowserView?IsPageLoaded=true&WebViewProcessID=52497\"].webViews.webViews.webViews",".otherElements[\"Login\"].buttons[\"Register here.\"]",".buttons[\"Register here.\"]",".webViews.webViews.webViews"],[[[-1,3,1],[-1,0,1]],[[-1,2],[-1,1]]],[0,0]]@END_MENU_TOKEN@*/.tap()
-        app/*@START_MENU_TOKEN@*/.webViews.webViews.webViews.textFields["example@email.com"]/*[[".otherElements[\"BrowserView?IsPageLoaded=true&WebViewProcessID=52497\"].webViews.webViews.webViews",".otherElements[\"Login\"].textFields[\"example@email.com\"]",".textFields[\"example@email.com\"]",".webViews.webViews.webViews"],[[[-1,3,1],[-1,0,1]],[[-1,2],[-1,1]]],[0,0]]@END_MENU_TOKEN@*/.tap()
-        app/*@START_MENU_TOKEN@*/.webViews.webViews.webViews.textFields["example@email.com"]/*[[".otherElements[\"BrowserView?IsPageLoaded=true&WebViewProcessID=52497\"].webViews.webViews.webViews",".otherElements[\"Login\"].textFields[\"example@email.com\"]",".textFields[\"example@email.com\"]",".webViews.webViews.webViews"],[[[-1,3,1],[-1,0,1]],[[-1,2],[-1,1]]],[0,0]]@END_MENU_TOKEN@*/.typeText("ricky.padilla+test4@passage.id")
-        app/*@START_MENU_TOKEN@*/.webViews.webViews.webViews.buttons["Continue"]/*[[".otherElements[\"BrowserView?IsPageLoaded=true&WebViewProcessID=52497\"].webViews.webViews.webViews",".otherElements[\"Login\"].buttons[\"Continue\"]",".buttons[\"Continue\"]",".webViews.webViews.webViews"],[[[-1,3,1],[-1,0,1]],[[-1,2],[-1,1]]],[0,0]]@END_MENU_TOKEN@*/.tap()
-        app/*@START_MENU_TOKEN@*/.webViews.webViews.webViews.buttons["Register with passkey"]/*[[".otherElements[\"BrowserView?IsPageLoaded=true&WebViewProcessID=52497\"].webViews.webViews.webViews",".otherElements[\"Login\"].buttons[\"Register with passkey\"]",".buttons[\"Register with passkey\"]",".webViews.webViews.webViews"],[[[-1,3,1],[-1,0,1]],[[-1,2],[-1,1]]],[0,0]]@END_MENU_TOKEN@*/.tap()
-        
-        var passkeyContinueButtonIsDisplayed = false
-        let passkeyContinueButton = springboard.staticTexts[Constants.systemContinueButton].firstMatch
+        // Check if iOS web auth session alert appears.
+        var webAuthSessionAlertIsDisplayed = false
+        let webAuthSessionAlert = springboard.alerts[webAuthAlertTitle]
         // NOTE: When starting up simulator, device takes a while to get ASAuthorization service to a usable state.
-        // So we retry up to `passkeyUIRetryCount` times.
-        for _ in 1...passkeyUIRetryCount {
-            // NOTE: The native passkey UI ALWAYS takes some time to appear - even when successful.
-            // So we wait for existence for `passkeyContinueButtonWaitTime` seconds.
-            passkeyContinueButtonIsDisplayed = passkeyContinueButton.waitForExistence(timeout: passkeyContinueButtonWaitTime)
-            if passkeyContinueButtonIsDisplayed {
+        // So we retry up to `authUIRetryCount` times.
+        for _ in 1...authUIRetryCount {
+            // NOTE: The web auth session UI takes some time to appear - even when successful.
+            // So we wait for existence for `authUIWaitTime` seconds.
+            webAuthSessionAlertIsDisplayed = webAuthSessionAlert.waitForExistence(timeout: authUIWaitTime)
+            if webAuthSessionAlertIsDisplayed {
                 break
             } else {
-                print("⚠️ passkey ui not appearing, try again...")
+                print("⚠️ web auth session not ready, try again...")
                 // Dismiss failure alert and try again.
-                app.buttons["OK"].tap()
-                app.buttons[Constants.registerPasskeyButton].tap()
+                app.alerts.firstMatch.buttons.firstMatch.tap()
+                app.buttons[Constants.hostedAuthButton].tap()
             }
         }
-        XCTAssertTrue(passkeyContinueButton.exists)
-        print("🔵 Passkey UI appeared, tap continue")
-        passkeyContinueButton.tap()
+        webAuthSessionAlert.scrollViews.otherElements.buttons[Constants.systemContinueButton].tap()
         
+        // PART TWO: REGISTER NEW ACCOUNT IN WEB VIEW USING PASSKEY
+        let webView = app.webViews
+        webView.buttons["Register here."].tap()
+        webView.textFields["example@email.com"].tap()
+        webView.textFields["example@email.com"].typeText(Helpers.newUserEmail())
+        webView.buttons["Continue"].tap()
+        webView.buttons["Register with passkey"].tap()
+        // Check if iOS passkey alert and button appear.
+        let passkeyContinueButton = springboard.staticTexts[Constants.systemContinueButton].firstMatch
+        XCTAssertTrue(passkeyContinueButton.waitForExistence(timeout: authUIWaitTime))
+        passkeyContinueButton.tap()
         // Simulate a successful biometric scan.
         Biometrics.successfulAuthentication()
         // If passkey flow is successful, the app should show a success alert along with the Passage auth token.
@@ -121,16 +120,15 @@ final class passage_ios_uitest_appUITests: XCTestCase {
         let predicate = NSPredicate(format: "label BEGINSWITH '\(Constants.authTokenLabel)'")
         let authTokenMessage = successAlert.scrollViews.otherElements.staticTexts.matching(predicate).element(boundBy: 0).label
         XCTAssertTrue(authTokenMessage.count > Constants.authTokenLabel.count)
-    }
-    
-    func testHostedLogout() {
-        app.launch()
+        
+        // PART THREE: LOG OUT SUCCESSFULLY
         app.buttons[Constants.hostedLogoutButton].tap()
         // Check if web auth session alert and button appear.
-        let alert = springboard.alerts["“passage-ios-uitest-app” Wants to Use “withpassage-uat.com” to Sign In"]
-        XCTAssertTrue(alert.waitForExistence(timeout: passkeyContinueButtonWaitTime))
-        alert.scrollViews.otherElements.buttons["Continue"].tap()
-        sleep(1)
+        let alert = springboard.alerts[webAuthAlertTitle]
+        XCTAssertTrue(alert.waitForExistence(timeout: authUIWaitTime))
+        alert.scrollViews.otherElements.buttons[Constants.systemContinueButton].tap()
+        // Wait for logout web view to show and be dismissed
+        sleep(2)
     }
 
 }
