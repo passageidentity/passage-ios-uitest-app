@@ -14,6 +14,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Set up Xcode 15.4
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: '15.4'
+
       - name: Install dependencies
         run: |
           # Update the Podfile to use the branch version of the Passage pod
