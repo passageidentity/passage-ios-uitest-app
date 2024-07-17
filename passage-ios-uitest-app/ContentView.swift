@@ -79,7 +79,7 @@ struct ContentView: View {
         textFieldIsFocused = false
         Task {
             do {
-                let authResult = try await passage.hostedAuth(clientSecret: Constants.oidcClientCode)
+                let authResult = try await passage.hostedAuth()
                 authToken = authResult.authToken
                 isShowingSuccessAlert = true
             } catch {
